@@ -5,10 +5,7 @@ import com.example.LibraryApplication.domain.member.MemberDto;
 import com.example.LibraryApplication.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -25,6 +22,13 @@ public class MemberController {
     @Operation(summary = "Adds member")
     public MemberDto addMember (@RequestBody MemberDto memberDto){
         return memberService.addMember(memberDto);
+    }
+
+
+    @GetMapping("/by/id")
+    @Operation(summary = "Searches member by id")
+    public MemberDto findMemberById(@RequestParam Integer id){
+        return memberService.findMemberById(id);
     }
 
 

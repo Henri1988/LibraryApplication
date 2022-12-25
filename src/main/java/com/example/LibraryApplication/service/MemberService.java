@@ -25,4 +25,11 @@ public class MemberService {
                 +member.getId() + " added!");
         return memberMapper.toDto(member);
     }
+
+    public MemberDto findMemberById(Integer id) {
+        log.info("Searching member with id "+ id + "...");
+        Member member = memberRepository.findMemberById(id);
+        log.info("Member with id " + id + " found!");
+        return memberMapper.toDto(member);
+    }
 }
