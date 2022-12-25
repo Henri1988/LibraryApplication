@@ -34,7 +34,7 @@ dependencies {
 	implementation "org.mapstruct:mapstruct:1.4.2.Final"
 	implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
-	implementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+	//implementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 
 
 	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui

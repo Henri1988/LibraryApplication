@@ -9,12 +9,12 @@ import java.io.Serializable;
  */
 @Data
 public class MemberDto implements Serializable {
-    private final Integer id;
-    private final String userName;
-    private final String password;
-    private final String email;
-    private final String firstName;
-    private final String lastName;
-    private final String address;
-    private final String phoneNumber;
+    private Integer id;
+    private String userName;
+    private String password;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phoneNumber;
 }
