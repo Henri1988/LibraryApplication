@@ -35,4 +35,12 @@ public class BookService {
         return bookMapper.toDto(book.get());
 
     }
+
+    public BookDto findBookByTitle(String title) {
+        log.info("Finding book with title " + title + "...");
+        Optional<Book> book = bookRepository.findBookByTitle(title);
+        log.info("Book with title " + title + " found!");
+        return bookMapper.toDto(book.get());
+
+    }
 }

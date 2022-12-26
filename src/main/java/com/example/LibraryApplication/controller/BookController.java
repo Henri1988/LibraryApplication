@@ -30,4 +30,12 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
+    @GetMapping("/by/title")
+    @Operation(summary = "Finds book by title")
+    public BookDto findBookByTitle (@RequestParam String title){
+        return bookService.findBookByTitle(title);
+    }
+
+
+
 }
