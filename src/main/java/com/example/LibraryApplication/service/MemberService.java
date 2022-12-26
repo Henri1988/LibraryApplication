@@ -1,12 +1,10 @@
 package com.example.LibraryApplication.service;
-
 import com.example.LibraryApplication.domain.member.Member;
 import com.example.LibraryApplication.domain.member.MemberDto;
 import com.example.LibraryApplication.domain.member.MemberMapper;
 import com.example.LibraryApplication.domain.member.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.Optional;
 
@@ -41,6 +39,5 @@ public class MemberService {
         Optional<Member> member = memberRepository.findByLastName(name);
         log.info("Member with the name " + name + " found!");
         return memberMapper.toDto(member.get());
-
     }
 }
