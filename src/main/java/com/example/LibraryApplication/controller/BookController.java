@@ -5,10 +5,7 @@ import com.example.LibraryApplication.domain.book.BookDto;
 import com.example.LibraryApplication.domain.book.BookRepository;
 import com.example.LibraryApplication.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -25,6 +22,12 @@ public class BookController {
     @Operation(summary = "Adds new book")
     public BookDto addBook(@RequestBody BookDto bookDto){
         return bookService.addBook(bookDto);
+    }
+
+    @GetMapping("/by/id")
+    @Operation(summary = "Finds book by id")
+    public BookDto findBookById (@RequestParam Integer id){
+        return bookService.findBookById(id);
     }
 
 }
