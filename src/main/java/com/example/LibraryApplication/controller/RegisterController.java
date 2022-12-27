@@ -25,6 +25,12 @@ public class RegisterController {
         return registerService.registerNewUser(request);
     }
 
+    public RegisterRequest findUserById (Integer id){
+        return registerService.findUserById(id);
+    }
+
+
+
 
 
 

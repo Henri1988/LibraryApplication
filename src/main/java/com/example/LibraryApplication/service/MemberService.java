@@ -19,12 +19,7 @@ public class MemberService {
 //        return memberMapper.toDto(member);
 //    }
 //
-//    public MemberDto findMemberById(Integer id) {
-//        log.info("Searching member with id " + id + "...");
-//        Member member = memberRepository.findMemberById(id);
-//        log.info("Member with id " + id + " found!");
-//        return memberMapper.toDto(member);
-//    }
+//
 //
 //    public MemberDto findByLastName(String name) {
 //        log.info("Searching member with name " + name + "...");

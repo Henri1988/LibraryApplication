@@ -28,4 +28,10 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
+
+
+    public User findUser(Integer id) {
+        userRepository.findUserById(id);
+        retun
+    }
 }
