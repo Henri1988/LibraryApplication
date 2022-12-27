@@ -1,10 +1,12 @@
 package com.example.LibraryApplication.service.user;
+
 import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.user.user.UserMapper;
 import com.example.LibraryApplication.domain.user.user.UserRepository;
 import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.validation.ValidationService;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.Optional;
 
@@ -32,7 +34,8 @@ public class UserService {
 
 
     public User findUserInfoById(Integer id) {
-        Optional <User> user =userRepository.findUserById(id);
+        Optional<User> user = userRepository.findUserById(id);
         return user.get();
     }
+
 }

@@ -1,12 +1,10 @@
 package com.example.LibraryApplication.controller;
-
-
+import com.example.LibraryApplication.service.contact.ContactService;
 import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.service.register.RegisterResponse;
 import com.example.LibraryApplication.service.register.RegisterService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 
 @RestController
@@ -16,6 +14,8 @@ public class RegisterController {
     @Resource
     private RegisterService registerService;
 
+    @Resource
+    private ContactService contactService;
 
     @PostMapping("/register")
     @Operation(summary = "Adds new user")
@@ -28,6 +28,14 @@ public class RegisterController {
     public RegisterRequest findUserInfoById (@RequestParam Integer id){
         return registerService.findUserInfoById(id);
     }
+
+    @GetMapping("/user-info/by/lastName")
+    @Operation(summary = "Finds user info by last name")
+    public RegisterRequest findUserInfoByLastName (@RequestParam String lastName){
+        return registerService.findUserInfoByLastName(lastName);
+    }
+
+
 
 
 

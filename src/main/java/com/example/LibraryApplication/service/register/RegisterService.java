@@ -47,13 +47,22 @@ public class RegisterService {
     }
 
 
- //   public MemberDto findMemberById(Integer id) {
-//        log.info("Searching member with id " + id + "...");
-//        Member member = memberRepository.findMemberById(id);
-//        log.info("Member with id " + id + " found!");
-//        return memberMapper.toDto(member);
-//    }
-//
-//
-//    }
+    public RegisterRequest findUserInfoByLastName(String lastName) {
+
+        RegisterRequest response = new RegisterRequest();
+        log.info("Searching member with lastname " + lastName + "...");
+        Contact contact =contactService.findContactInfoByLastName(lastName);
+        User user =userService.findUserInfoById(contact.getUser().getId());
+
+        response.setUserName(user.getUserName());
+        response.setPassword(user.getPassword());
+        response.setAddress(contact.getAddress());
+        response.setEmail(contact.getEmail());
+        response.setFirstName(contact.getFirstName());
+        response.setLastName(contact.getLastName());
+        response.setMobileNumber(contact.getMobileNumber());
+        log.info("User: " + response.getFirstName() + " " + response.getLastName()+ " found!");
+        return response;
+
+    }
 }

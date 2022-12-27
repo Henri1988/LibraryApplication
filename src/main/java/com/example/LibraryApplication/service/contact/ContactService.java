@@ -9,6 +9,7 @@ import com.example.LibraryApplication.service.register.RegisterRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -25,5 +26,9 @@ public class ContactService {
 
     public Contact findContactById(Integer id) {
         return contactRepository.findContactInfoByUserId(id);
+    }
+
+    public Contact findContactInfoByLastName(String lastName) {
+        return contactRepository.findContactByLastName(lastName);
     }
 }
