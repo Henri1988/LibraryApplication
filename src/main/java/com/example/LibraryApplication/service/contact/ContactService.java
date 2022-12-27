@@ -22,4 +22,8 @@ public class ContactService {
         contact.setUser(user);
         contactRepository.save(contact);
     }
+
+    public Contact findContactById(Integer id) {
+        return contactRepository.findContactInfoByUserId(id);
+    }
 }

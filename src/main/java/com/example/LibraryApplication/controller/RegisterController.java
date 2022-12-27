@@ -5,10 +5,8 @@ import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.service.register.RegisterResponse;
 import com.example.LibraryApplication.service.register.RegisterService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
 
 @RestController
@@ -25,8 +23,10 @@ public class RegisterController {
         return registerService.registerNewUser(request);
     }
 
-    public RegisterRequest findUserById (Integer id){
-        return registerService.findUserById(id);
+    @GetMapping("/user-info/by/id")
+    @Operation(summary = "Finds user info by id")
+    public RegisterRequest findUserInfoById (@RequestParam Integer id){
+        return registerService.findUserInfoById(id);
     }
 
 

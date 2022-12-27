@@ -6,6 +6,7 @@ import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.validation.ValidationService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.Optional;
 
 
 @Service
@@ -30,8 +31,8 @@ public class UserService {
     }
 
 
-    public User findUser(Integer id) {
-        userRepository.findUserById(id);
-        retun
+    public User findUserInfoById(Integer id) {
+        Optional <User> user =userRepository.findUserById(id);
+        return user.get();
     }
 }
