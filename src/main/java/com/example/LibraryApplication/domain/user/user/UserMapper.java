@@ -1,13 +1,14 @@
 package com.example.LibraryApplication.domain.user.user;
 
+import com.example.LibraryApplication.service.register.RegisterRequest;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper {
-    User userDtoToUser(UserDto userDto);
+    User toEntity(RegisterRequest request);
 
-    UserDto userToUserDto(User user);
+    UserDto toDto(User user);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User updateUserFromUserDto(UserDto userDto, @MappingTarget User user);
+    User updateEntity(UserDto userDto, @MappingTarget User user);
 }

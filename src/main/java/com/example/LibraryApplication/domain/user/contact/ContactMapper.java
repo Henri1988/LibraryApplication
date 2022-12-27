@@ -7,12 +7,12 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ContactMapper {
 
-    Contact contactDtoToContact(RegisterRequest request);
+    Contact toEntity(RegisterRequest request);
 
-    @InheritInverseConfiguration(name = "contactDtoToContact")
-    Contact contactToContactDto(RegisterResponse response);
+    @InheritInverseConfiguration(name = "toEntity")
+    Contact toDto(RegisterResponse response);
 
-    @InheritConfiguration(name = "contactDtoToContact")
+    @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Contact updateContactFromContactDto(RegisterRequest registerRequest, @MappingTarget Contact contact);
+    Contact updateEntity(RegisterRequest registerRequest, @MappingTarget Contact contact);
 }

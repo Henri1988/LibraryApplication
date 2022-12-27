@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class RegisterRequest implements Serializable {
-    private String username;
+    private String userName;
     private String password;
     private String firstName;
     private String lastName;
