@@ -2,6 +2,8 @@ package com.example.LibraryApplication.domain.book;
 
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface BookMapper {
     @Mapping(target = "id", ignore = true)
@@ -9,6 +11,8 @@ public interface BookMapper {
 
     BookDto toDto(Book book);
 
+    List<BookDto>toDtos(List<Book>books);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Book updateEntity(BookDto bookDto, @MappingTarget Book book);
+    Book updateBookFromBookDto(BookDto bookDto, @MappingTarget Book book);
 }

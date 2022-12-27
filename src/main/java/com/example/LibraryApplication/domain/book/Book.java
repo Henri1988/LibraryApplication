@@ -24,10 +24,16 @@ public class Book {
     @Column(name = "release_year", nullable = false)
     private Integer releaseYear;
 
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
+    @Column(name = "genre", nullable = false)
+    private String genre;
+
+    @Column(name = "lending_period", nullable = false)
+    private Integer lendingPeriod;
 
     @Column(name = "location", nullable = false)
     private String location;
+
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
 }

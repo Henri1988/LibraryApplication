@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.service;
+package com.example.LibraryApplication.service.book;
 
 import com.example.LibraryApplication.domain.book.Book;
 import com.example.LibraryApplication.domain.book.BookDto;
@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -33,7 +34,6 @@ public class BookService {
         Optional<Book> book = bookRepository.findBookById(id);
         log.info("Book with id " + id + " found!");
         return bookMapper.toDto(book.get());
-
     }
 
     public BookDto findBookByTitle(String title) {
@@ -41,6 +41,10 @@ public class BookService {
         Optional<Book> book = bookRepository.findBookByTitle(title);
         log.info("Book with title " + title + " found!");
         return bookMapper.toDto(book.get());
+    }
 
+    public List<BookDto> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+        return bookMapper.toDtos(books);
     }
 }
