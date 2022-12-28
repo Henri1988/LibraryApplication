@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,8 +22,8 @@ public class Book {
     @Column(name = "author", nullable = false)
     private String author;
 
-    @Column(name = "release_year", nullable = false)
-    private Integer releaseYear;
+    @Column(name = "release_time", nullable = false)
+    private LocalDate releaseTime;
 
     @Column(name = "genre", nullable = false)
     private String genre;

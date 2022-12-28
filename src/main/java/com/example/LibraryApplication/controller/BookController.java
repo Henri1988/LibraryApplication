@@ -1,11 +1,8 @@
 package com.example.LibraryApplication.controller;
-
-
 import com.example.LibraryApplication.domain.book.BookDto;
 import com.example.LibraryApplication.service.book.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -15,7 +12,6 @@ public class BookController {
 
     @Resource
     private BookService bookService;
-
 
 
     @PostMapping("/add")
@@ -40,6 +36,12 @@ public class BookController {
     @Operation(summary = "Finds all books")
     public List<BookDto> getAllBooks(){
         return bookService.getAllBooks();
+    }
+
+    @GetMapping("/find/by/genre")
+    @Operation(summary = "Finds books by genre")
+    public List<BookDto>getBooksByGenre(@RequestParam String genre){
+        return bookService.getBooksByGenre(genre);
     }
 
 

@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-12-27 12:44:58.114
+-- Last modification date: 2022-12-28 11:38:12.884
 
 -- tables
 -- Table: book
@@ -7,7 +7,7 @@ CREATE TABLE book (
     id serial  NOT NULL,
     title varchar(255)  NOT NULL,
     author varchar(255)  NOT NULL,
-    release_year int  NOT NULL,
+    release_time date  NOT NULL,
     genre varchar(255)  NOT NULL,
     lending_period int  NOT NULL,
     location varchar(255)  NOT NULL,

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,4 +49,17 @@ public class BookService {
         List<Book> books = bookRepository.findAll();
         return bookMapper.toDtos(books);
     }
+
+    public List<BookDto> getBooksByGenre(String genre) {
+        List<Book> books = bookRepository.findBooksByGenre(genre);
+        return bookMapper.toDtos(books);
+
+    }
+
+
+
+
+
+
+
 }
