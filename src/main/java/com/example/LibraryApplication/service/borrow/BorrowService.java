@@ -32,26 +32,21 @@ public class BorrowService {
 
         borrowResponse.setBookId(book.getId());
         borrowResponse.setUserId(user.getId());
-
-        //Todo:add one more condition. If book releaseTime is newer than 3 months then the lending period is also 7 days, otherwise
-        if(book.getQuantity() < 5 ){                //book.getReleaseTime()<LocalDate.now().minusDays(31)
-
-
-        }
-
         borrowResponse.setBorrowedDate(LocalDate.now());
 
-
+        //Todo:add one more condition to if statement. If book releaseTime is newer than 3 months from the time of lending, then
+        // the lending period is also 7 days, otherwise its 28 days.
+        if(book.getQuantity() < 5 ){                 //book.getReleaseTime()<LocalDate.now().minusDays(31)
+            borrowResponse.setReturnDate(LocalDate.now().plusDays(7));
+        }else{
+            borrowResponse.setReturnDate(LocalDate.now().plusDays(28));
+        }
 
         borrowResponse.setBookQuantity(book.getQuantity());
+
+
+
         borrowResponse.setBookReleaseTime(book.getReleaseTime());
-
-
-//            Tavapärane laenutuse tähtaeg on neli nädalat. Kui raamat on alla kolme kuu vana,
-//                siis laenutuse tähtaeg on üks nädal. Kui raamatu eksemplare on järgi alla viie,
-//                siis laenutuse tähtaeg on üks nädal.
-
-
 
 
        /* private String bookTitle;
