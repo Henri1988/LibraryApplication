@@ -57,9 +57,7 @@ public class BookService {
     }
 
 
-
-
-
-
-
+    public Book getBookById(Integer bookId) {
+        return bookRepository.getById(bookId);
+    }
 }
