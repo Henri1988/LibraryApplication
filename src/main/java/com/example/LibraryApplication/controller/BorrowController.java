@@ -19,7 +19,7 @@ public class BorrowController {
 
     @PostMapping("/save")
     @Operation(summary = "Saves book borrow")
-    public BorrowResponse saveBookBorrow(@RequestBody BorrowDto borrowDto){
+    public BorrowResponse saveBookBorrow(@RequestBody BorrowDto borrowDto) throws Exception {
         return borrowService.saveBookBorrow(borrowDto);
     }
 
