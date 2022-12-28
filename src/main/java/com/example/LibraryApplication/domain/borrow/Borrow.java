@@ -33,6 +33,4 @@ public class Borrow {
     @Column(name = "returned_date")
     private LocalDate returnedDate;
 
-
-
 }
