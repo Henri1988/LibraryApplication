@@ -10,11 +10,6 @@ public class BorrowResponse {
     private Integer userId;
     private Integer bookId;
     private String bookTitle;
-    private String bookAuthor;
-    private LocalDate bookReleaseTime;
-    private String bookGenre;
-    private Integer bookLendingPeriod;
-    private String bookLocation;
     private Integer bookQuantity;
     private LocalDate borrowedDate;
     private LocalDate returnDate;

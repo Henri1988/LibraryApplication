@@ -30,13 +30,33 @@ public class BorrowService {
 
     public BorrowResponse saveBookBorrow(BorrowDto borrowDto) throws Exception {
 
-        BorrowResponse borrowResponse = new BorrowResponse();
+        Borrow borrow = new Borrow();
         Book book = bookService.getBookById(borrowDto.getBookId());
         User user = userService.getUserById(borrowDto.getUserId());
 
+        borrow.setBook(book);
+        borrow.setUser(user);
+        borrow.setBorrowedDate(LocalDate.now());
+
+        if (book.getQuantity() < 5) {                 //book.getReleaseTime()<LocalDate.now().minusDays(31)
+            borrow.setReturnDate(LocalDate.now().plusDays(7));
+        } else {
+            borrow.setReturnDate(LocalDate.now().plusDays(28));
+        }
+
+        borrowRepository.save(borrow);
+
+  //      if (book.getQuantity() <= 0){
+//            throw new Exception();
+//        }else{
+//            borrow.setBookQuantity(book.getQuantity() -1);
+//        }
+
+        BorrowResponse borrowResponse = new BorrowResponse();
         borrowResponse.setBookId(book.getId());
         borrowResponse.setUserId(user.getId());
         borrowResponse.setBorrowedDate(LocalDate.now());
+        borrowResponse.setBookTitle(book.getTitle());
 
         //Todo:add one more condition to if statement. If book releaseTime is newer than 3 months from the time of lending, then
         // the lending period is also 7 days, otherwise its 28 days.
@@ -52,28 +72,12 @@ public class BorrowService {
             borrowResponse.setBookQuantity(book.getQuantity() -1);
         }
 
-        borrowResponse.setBookReleaseTime(book.getReleaseTime());
-        borrowResponse.setBookAuthor(book.getAuthor());
-        borrowResponse.setBookGenre(book.getGenre());
-        borrowResponse.setBookLocation(book.getLocation());
-        borrowResponse.setBookLendingPeriod(book.getLendingPeriod());  //pole vaja
-        borrowResponse.setBookTitle(book.getTitle());
-
         return borrowResponse;
     }
 
 
-//    public void saveBookOrder(Collection<Long> selectedBookIds, User user) {
-//        for (Long bookId : selectedBookIds) {
-//            Book book = bookRepo.findById(bookId).get();
-//            book.setReturnDate(LocalDate.now().plusDays(20));
-//            book.setStartReservationDate(null);
-//            book.setEndReservationDate(null);
-//            book.setReservedByUser(null);
-//            book.setReadyForPickup(false);
-//            book.setTheUser(user);
-//            bookRepo.save(book);
-//            usRepo.save(user);
-//        }
+//    private void lendOutBook(){
+//        bookService.removeOneBook();
 //    }
+
 }

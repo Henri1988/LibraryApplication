@@ -6,6 +6,7 @@ import org.mapstruct.*;
 public interface BorrowMapper {
     @Mapping(source = "userId", target = "user.id")
     @Mapping(source = "bookId", target = "book.id")
+    @Mapping(target = "id", ignore = true)
     Borrow toEntity(BorrowDto borrowDto);
 
     @InheritInverseConfiguration(name = "toEntity")
