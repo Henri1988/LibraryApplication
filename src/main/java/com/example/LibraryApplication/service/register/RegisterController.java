@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.controller;
+package com.example.LibraryApplication.service.register;
 import com.example.LibraryApplication.domain.user.contact.ContactService;
 import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.service.register.RegisterResponse;
