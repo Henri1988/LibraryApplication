@@ -1,26 +1,28 @@
 package com.example.LibraryApplication.controller;
+
+
 import com.example.LibraryApplication.domain.borrow.BorrowDto;
-import com.example.LibraryApplication.service.borrow.BorrowResponse;
-import com.example.LibraryApplication.service.borrow.BorrowService;
+import com.example.LibraryApplication.service.library.LibraryService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/borrow")
-public class BorrowController {
+@RequestMapping("/library")
+public class LibraryController {
 
     @Resource
-    private BorrowService borrowService;
+    private LibraryService libraryService;
 
 
-    @PostMapping("/save")
+    @PostMapping("/save/borrow")
     @Operation(summary = "Saves book borrow")
-    public BorrowResponse saveBookBorrow(@RequestBody BorrowDto borrowDto) throws Exception {
-        return borrowService.saveBookBorrow(borrowDto);
+    public void saveBookBorrow(@RequestBody BorrowDto borrowDto) throws Exception {
+        libraryService.saveBookBorrow(borrowDto);
     }
 
 }

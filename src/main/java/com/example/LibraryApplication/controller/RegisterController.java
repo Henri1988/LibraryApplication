@@ -1,5 +1,5 @@
 package com.example.LibraryApplication.controller;
-import com.example.LibraryApplication.service.contact.ContactService;
+import com.example.LibraryApplication.domain.user.contact.ContactService;
 import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.service.register.RegisterResponse;
 import com.example.LibraryApplication.service.register.RegisterService;

@@ -3,8 +3,8 @@ package com.example.LibraryApplication.service.register;
 
 import com.example.LibraryApplication.domain.user.contact.Contact;
 import com.example.LibraryApplication.domain.user.user.User;
-import com.example.LibraryApplication.service.contact.ContactService;
-import com.example.LibraryApplication.service.user.UserService;
+import com.example.LibraryApplication.domain.user.contact.ContactService;
+import com.example.LibraryApplication.domain.user.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

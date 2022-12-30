@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.service.book;
+package com.example.LibraryApplication.domain.book;
 
 import com.example.LibraryApplication.domain.book.Book;
 import com.example.LibraryApplication.domain.book.BookDto;
@@ -56,9 +56,17 @@ public class BookService {
 
     }
 
-
     public Book getBookById(Integer bookId) {
         return bookRepository.getById(bookId);
     }
 
+    public void updateBookQuantityOnLending(Integer bookId) throws Exception {
+        Book book = bookRepository.getBookById(bookId);
+        if (book.getQuantity() <= 0) {
+            throw new Exception();
+        } else {
+            book.setQuantity(book.getQuantity() - 1);
+        }
+        bookRepository.save(book);
+    }
 }

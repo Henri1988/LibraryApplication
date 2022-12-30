@@ -11,6 +11,11 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("select b from Book b where b.id = ?1")
     Optional<Book> findBookById(Integer id);
 
+    @Query("select b from Book b where b.id = ?1")
+    Book getBookById(Integer id);
+
+
+
     @Query("select b from Book b where b.title = ?1")
     Optional<Book> findBookByTitle(String title);
 

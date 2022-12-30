@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.service.contact;
+package com.example.LibraryApplication.domain.user.contact;
 
 
 import com.example.LibraryApplication.domain.user.contact.Contact;

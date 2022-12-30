@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.service.user;
+package com.example.LibraryApplication.domain.user.user;
 
 import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.user.user.UserMapper;
