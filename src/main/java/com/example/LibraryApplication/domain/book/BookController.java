@@ -16,7 +16,7 @@ public class BookController {
 
     @PostMapping("/add")
     @Operation(summary = "Adds new book")
-    public BookDto addBook(@RequestBody BookDto bookDto){
+    public BookResponse addBook(@RequestBody BookDto bookDto){
         return bookService.addBook(bookDto);
     }
 

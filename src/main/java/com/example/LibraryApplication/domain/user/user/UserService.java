@@ -18,7 +18,6 @@ public class UserService {
     private UserMapper userMapper;
     @Resource
     private UserRepository userRepository;
-
     @Resource
     private ValidationService validationService;
 

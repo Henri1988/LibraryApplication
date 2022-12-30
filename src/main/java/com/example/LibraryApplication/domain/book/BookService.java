@@ -3,6 +3,7 @@ import com.example.LibraryApplication.domain.book.Book;
 import com.example.LibraryApplication.domain.book.BookDto;
 import com.example.LibraryApplication.domain.book.BookMapper;
 import com.example.LibraryApplication.domain.book.BookRepository;
+import com.example.LibraryApplication.service.library.ReturnBorrowRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,18 @@ public class BookService {
     private BookMapper bookMapper;
 
 
-    public BookDto addBook(BookDto bookDto) {
-        Book book = bookMapper.toEntity(bookDto);
+    public BookResponse addBook(BookDto bookDto) {
         log.info("Adding book...");
+        Book book = bookMapper.toEntity(bookDto);
+        if (book.getQuantity() < 5 || (book.getReleaseTime().isAfter(LocalDate.now().minusDays(93)))) {
+            book.setLendingPeriod(7);
+        } else {
+            book.setLendingPeriod(28);
+        }
+
         bookRepository.save(book);
         log.info("New book, title: " + book.getTitle() + " with id " + book.getId() + " added!");
-        return bookMapper.toDto(book);
+        return bookMapper.toResponse(book);
     }
 
     public BookDto findBookById(Integer id) {
@@ -66,6 +73,12 @@ public class BookService {
         } else {
             book.setQuantity(book.getQuantity() - 1);
         }
+        bookRepository.save(book);
+    }
+
+    public void updateBookQuantityOnReturning(ReturnBorrowRequest returnBorrowRequest) {
+        Book book = bookRepository.getBookById(returnBorrowRequest.getBookId());
+        book.setQuantity(book.getQuantity() + 1);
         bookRepository.save(book);
     }
 }

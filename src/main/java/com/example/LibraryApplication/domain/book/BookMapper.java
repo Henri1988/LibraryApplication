@@ -13,6 +13,10 @@ public interface BookMapper {
 
     List<BookDto> toDtos(List<Book>books);
 
+    BookResponse toResponse (Book book);
+
+
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Book updateBookFromBookDto(BookDto bookDto, @MappingTarget Book book);
 }
