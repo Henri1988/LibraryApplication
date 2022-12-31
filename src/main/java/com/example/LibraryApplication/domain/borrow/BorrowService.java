@@ -43,15 +43,6 @@ public class BorrowService {
         log.info("New book borrow with id: " + borrow.getId() + " is saved!");
     }
 
-    public void updateBookBorrowReturnedDate(ReturnBorrowRequest returnBorrowRequest) {
-        Borrow borrow = new Borrow();
-        Book book = bookService.getBookById(returnBorrowRequest.getBookId());
-        User user = userService.getUserById(returnBorrowRequest.getUserId());
-        borrow.setUser(user);
-        borrow.setBook(book);
-        borrowRepository.save(borrow);
-
-    }
 
     public Borrow getBorrowById(Integer borrowId) {
         return borrowRepository.getById(borrowId);
