@@ -2,7 +2,6 @@ package com.example.LibraryApplication.service.library;
 import com.example.LibraryApplication.domain.borrow.BorrowDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 
 @RestController
@@ -19,10 +18,10 @@ public class LibraryController {
         libraryService.saveBookBorrow(borrowDto);
     }
 
-    @PutMapping("/update/borrow")
-    @Operation(summary = "Returns book borrow")
-    public void returnBookBorrow(@RequestBody ReturnBorrowRequest returnBorrowRequest){
-        libraryService.returnBookBorrow(returnBorrowRequest);
+    @PostMapping("/save/borrow-return")
+    @Operation(summary = "Saves book borrow return")
+    public void saveBookBorrowReturn(@RequestBody ReturnBorrowRequest returnBorrowRequest){
+        libraryService.saveBookBorrowReturn(returnBorrowRequest);
     }
 
 

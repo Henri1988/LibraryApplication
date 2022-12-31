@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-12-28 11:38:12.884
+-- Last modification date: 2022-12-31 11:31:50.091
 
 -- tables
 -- Table: book
@@ -22,7 +22,6 @@ CREATE TABLE borrow (
     book_id int  NOT NULL,
     borrowed_date date  NULL,
     return_date date  NULL,
-    returned_date date  NULL,
     CONSTRAINT borrow_pk PRIMARY KEY (id)
 );
 
@@ -36,6 +35,16 @@ CREATE TABLE contact (
     mobile_number varchar(255)  NOT NULL,
     user_id int  NOT NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
+);
+
+-- Table: return_borrow
+CREATE TABLE return_borrow (
+    id serial  NOT NULL,
+    user_id int  NOT NULL,
+    book_id int  NOT NULL,
+    returned_date date  NOT NULL,
+    borrow_id int  NOT NULL,
+    CONSTRAINT return_borrow_pk PRIMARY KEY (id)
 );
 
 -- Table: role
@@ -80,6 +89,30 @@ ALTER TABLE borrow ADD CONSTRAINT borrow_user
 
 -- Reference: contact_user (table: contact)
 ALTER TABLE contact ADD CONSTRAINT contact_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: return_borrow_book (table: return_borrow)
+ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_book
+    FOREIGN KEY (book_id)
+    REFERENCES book (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: return_borrow_borrow (table: return_borrow)
+ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_borrow
+    FOREIGN KEY (borrow_id)
+    REFERENCES borrow (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: return_borrow_user (table: return_borrow)
+ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_user
     FOREIGN KEY (user_id)
     REFERENCES "user" (id)  
     NOT DEFERRABLE 

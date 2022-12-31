@@ -1,6 +1,4 @@
 package com.example.LibraryApplication.domain.book;
-import com.example.LibraryApplication.domain.book.BookDto;
-import com.example.LibraryApplication.domain.book.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
