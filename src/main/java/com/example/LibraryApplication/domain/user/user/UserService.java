@@ -3,6 +3,7 @@ package com.example.LibraryApplication.domain.user.user;
 import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.user.user.UserMapper;
 import com.example.LibraryApplication.domain.user.user.UserRepository;
+import com.example.LibraryApplication.service.login.LogInRequest;
 import com.example.LibraryApplication.service.register.RegisterRequest;
 import com.example.LibraryApplication.validation.ValidationService;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,11 @@ public class UserService {
 
     public User getUserById(Integer userId) {
         return userRepository.getById(userId);
+    }
+
+    public User getValidUser(LogInRequest request) {
+        Optional<User> user = userRepository.findByUsernameAndPassword(request.getUserName(), request.getPassword());
+        validationService.userExists(user);
+        return user.get();
     }
 }

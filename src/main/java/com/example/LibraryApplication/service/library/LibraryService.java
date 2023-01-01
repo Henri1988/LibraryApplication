@@ -5,6 +5,7 @@ import com.example.LibraryApplication.domain.borrow.BorrowService;
 import com.example.LibraryApplication.domain.returnborrow.ReturnBorrowService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LibraryService {
@@ -29,4 +30,7 @@ public class LibraryService {
 
     }
 
+    public List<LateReturnResponse> getReportOfLateBooks() {
+        return null;
+    }
 }

@@ -35,27 +35,4 @@ public class RegisterController {
         return registerService.findUserInfoByLastName(lastName);
     }
 
-
-
-
-
-
-
-
-//
-//    @GetMapping("/by/id")
-//    @Operation(summary = "Searches member by id")
-//    public MemberDto findMemberById(@RequestParam Integer id){
-//        return memberService.findMemberById(id);
-//    }
-//
-//
-//    @GetMapping("/by/last-name")
-//    @Operation(summary = "Finds member by last name")
-//    public MemberDto findByLastName(@RequestParam String name){
-//        return memberService.findByLastName(name);
-//    }
-
-
-
 }

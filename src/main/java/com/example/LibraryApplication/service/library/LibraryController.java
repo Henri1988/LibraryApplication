@@ -28,6 +28,6 @@ public class LibraryController {
     @GetMapping("/get/report/delayed/books")
     @Operation(summary = "Gets report of not returned books and their borrowers")
     public List <LateReturnResponse>  getReportOfLateBooks(){
-
+        return libraryService.getReportOfLateBooks();
     }
 }

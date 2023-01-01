@@ -31,4 +31,8 @@ public class ContactService {
     public Contact findContactInfoByLastName(String lastName) {
         return contactRepository.findContactByLastName(lastName);
     }
+
+    public Contact getUserFirstLastNameById(Integer userId) {
+        return contactRepository.getUserFirstLastNameById(userId);
+    }
 }
