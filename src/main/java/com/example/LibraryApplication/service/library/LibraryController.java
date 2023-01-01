@@ -3,6 +3,7 @@ import com.example.LibraryApplication.domain.borrow.BorrowDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/library")
@@ -22,5 +23,11 @@ public class LibraryController {
     @Operation(summary = "Saves book borrow return")
     public void saveBookBorrowReturn(@RequestBody ReturnBorrowRequest returnBorrowRequest){
         libraryService.saveBookBorrowReturn(returnBorrowRequest);
+    }
+
+    @GetMapping("/get/report/delayed/books")
+    @Operation(summary = "Gets report of delayed books and borrowers")
+    public List <LateReturnResponse>  getReportOfLateBooks(){
+
     }
 }
