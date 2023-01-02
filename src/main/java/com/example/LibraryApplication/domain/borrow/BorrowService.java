@@ -32,8 +32,6 @@ public class BorrowService {
         borrow.setUser(user);
         borrow.setBorrowedDate(LocalDate.now());
 
-        //Todo:add one more condition to if statement. If book releaseTime is newer than 3 months from the time of lending, then
-        // the lending period is also 7 days, otherwise its 28 days.
         if (book.getQuantity() < 5 || (book.getReleaseTime().isAfter(LocalDate.now().minusDays(93)))) {
             borrow.setReturnDate(LocalDate.now().plusDays(7));
         } else {

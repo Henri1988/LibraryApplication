@@ -1,6 +1,5 @@
 package com.example.LibraryApplication.service.register;
 
-
 import com.example.LibraryApplication.domain.user.contact.Contact;
 import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.user.contact.ContactService;
@@ -24,7 +23,6 @@ public class RegisterService {
     public RegisterResponse registerNewUser(RegisterRequest request) {
         User user = userService.addNewUser(request);
         contactService.addNewContact(user, request);
-//        userRoleService.addNewUserRole(user.getId());
         return new RegisterResponse(user.getId());
     }
 
