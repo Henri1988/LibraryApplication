@@ -1,10 +1,18 @@
 package com.example.LibraryApplication.service.library;
 import com.example.LibraryApplication.domain.book.BookService;
+import com.example.LibraryApplication.domain.borrow.Borrow;
 import com.example.LibraryApplication.domain.borrow.BorrowDto;
 import com.example.LibraryApplication.domain.borrow.BorrowService;
+import com.example.LibraryApplication.domain.returnborrow.ReturnBorrow;
 import com.example.LibraryApplication.domain.returnborrow.ReturnBorrowService;
+import com.example.LibraryApplication.domain.user.contact.Contact;
+import com.example.LibraryApplication.domain.user.contact.ContactService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,7 +21,8 @@ public class LibraryService {
     private BorrowService borrowService;
     @Resource
     private BookService bookService;
-
+    @Resource
+    private ContactService contactService;
     @Resource
     private ReturnBorrowService returnBorrowService;
 
@@ -30,7 +39,25 @@ public class LibraryService {
 
     }
 
-    public List<LateReturnResponse> getReportOfLateBooks() {
-        return null;
+    public List<LateReturnResponseItem> getReportOfLateBooks() {
+        List<LateReturnResponseItem> lateReturnResponse = new ArrayList<>();
+
+        List<Borrow> lateBorrows = borrowService.getLateBorrows();
+        for (Borrow borrow: lateBorrows) {
+            LateReturnResponseItem item = new LateReturnResponseItem();
+            item.setBorrowId(borrow.getId());
+            item.setUserId(borrow.getUser().getId());
+            item.setBookId(borrow.getBook().getId());
+            item.setTitle(borrow.getBook().getTitle());
+            item.setDaysOver(ChronoUnit.DAYS.between(borrow.getReturnDate(), LocalDate.now()));
+
+            Contact contact = contactService.getUserFirstLastNameById(borrow.getUser().getId());
+            item.setFirstName(contact.getFirstName());
+            item.setLastName(contact.getLastName());
+
+            lateReturnResponse.add(item);
+        }
+
+        return lateReturnResponse;
     }
 }

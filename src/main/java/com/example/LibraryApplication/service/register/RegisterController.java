@@ -1,8 +1,6 @@
 package com.example.LibraryApplication.service.register;
 import com.example.LibraryApplication.domain.user.contact.ContactService;
-import com.example.LibraryApplication.service.register.RegisterRequest;
-import com.example.LibraryApplication.service.register.RegisterResponse;
-import com.example.LibraryApplication.service.register.RegisterService;
+import com.example.LibraryApplication.service.authorizer.AuthorizerService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
@@ -12,6 +10,9 @@ import javax.annotation.Resource;
 public class RegisterController {
 
     @Resource
+    private AuthorizerService authorizerService;
+
+    @Resource
     private RegisterService registerService;
 
     @Resource
@@ -19,7 +20,8 @@ public class RegisterController {
 
     @PostMapping("/register")
     @Operation(summary = "Adds new user")
-    public RegisterResponse registerNewUser(@RequestBody RegisterRequest request) {
+    public RegisterResponse registerNewUser(@RequestBody RegisterRequest request) throws Exception {
+        authorizerService.authorizeAsAdmin(request.getUserSessionId());
         return registerService.registerNewUser(request);
     }
 

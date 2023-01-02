@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.naming.AuthenticationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         apiError.setStatusCode(HttpStatus.NOT_FOUND.value());
         apiError.setDetail(exception.getDetail());
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleAuthenticationException(AuthenticationException exception) {
+        ApiError apiError = new ApiError();
+        apiError.setTitle(exception.getMessage());
+        apiError.setStatusCode(HttpStatus.UNAUTHORIZED.value());
+        return new ResponseEntity<>(apiError, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler

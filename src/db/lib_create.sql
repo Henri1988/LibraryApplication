@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-12-31 11:31:50.091
+-- Last modification date: 2023-01-02 19:25:09.847
 
 -- tables
 -- Table: book
@@ -20,9 +20,19 @@ CREATE TABLE borrow (
     id serial  NOT NULL,
     user_id int  NOT NULL,
     book_id int  NOT NULL,
-    borrowed_date date  NULL,
-    return_date date  NULL,
+    borrowed_date date  NOT NULL,
+    return_date date  NOT NULL,
     CONSTRAINT borrow_pk PRIMARY KEY (id)
+);
+
+-- Table: borrow_return
+CREATE TABLE borrow_return (
+    id serial  NOT NULL,
+    user_id int  NOT NULL,
+    book_id int  NOT NULL,
+    returned_date date  NOT NULL,
+    borrow_id int  NOT NULL,
+    CONSTRAINT borrow_return_pk PRIMARY KEY (id)
 );
 
 -- Table: contact
@@ -35,16 +45,6 @@ CREATE TABLE contact (
     mobile_number varchar(255)  NOT NULL,
     user_id int  NOT NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
-);
-
--- Table: return_borrow
-CREATE TABLE return_borrow (
-    id serial  NOT NULL,
-    user_id int  NOT NULL,
-    book_id int  NOT NULL,
-    returned_date date  NOT NULL,
-    borrow_id int  NOT NULL,
-    CONSTRAINT return_borrow_pk PRIMARY KEY (id)
 );
 
 -- Table: role
@@ -70,7 +70,23 @@ CREATE TABLE user_role (
     CONSTRAINT user_role_pk PRIMARY KEY (id)
 );
 
+-- Table: user_session
+CREATE TABLE user_session (
+    id serial  NOT NULL,
+    user_id int  NOT NULL,
+    expires_at date  NOT NULL,
+    CONSTRAINT user_session_pk PRIMARY KEY (id)
+);
+
 -- foreign keys
+-- Reference: Table_11_user (table: user_session)
+ALTER TABLE user_session ADD CONSTRAINT Table_11_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
 -- Reference: borrow_book (table: borrow)
 ALTER TABLE borrow ADD CONSTRAINT borrow_book
     FOREIGN KEY (book_id)
@@ -95,24 +111,24 @@ ALTER TABLE contact ADD CONSTRAINT contact_user
     INITIALLY IMMEDIATE
 ;
 
--- Reference: return_borrow_book (table: return_borrow)
-ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_book
+-- Reference: return_borrow_book (table: borrow_return)
+ALTER TABLE borrow_return ADD CONSTRAINT return_borrow_book
     FOREIGN KEY (book_id)
     REFERENCES book (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
 
--- Reference: return_borrow_borrow (table: return_borrow)
-ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_borrow
+-- Reference: return_borrow_borrow (table: borrow_return)
+ALTER TABLE borrow_return ADD CONSTRAINT return_borrow_borrow
     FOREIGN KEY (borrow_id)
     REFERENCES borrow (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
 
--- Reference: return_borrow_user (table: return_borrow)
-ALTER TABLE return_borrow ADD CONSTRAINT return_borrow_user
+-- Reference: return_borrow_user (table: borrow_return)
+ALTER TABLE borrow_return ADD CONSTRAINT return_borrow_user
     FOREIGN KEY (user_id)
     REFERENCES "user" (id)  
     NOT DEFERRABLE 

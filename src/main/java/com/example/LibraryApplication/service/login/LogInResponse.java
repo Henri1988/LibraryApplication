@@ -5,5 +5,6 @@ import lombok.Data;
 public class LogInResponse {
     private Integer userId;
     private Integer userRoleId;
+    private Integer userSessionId;
     private String personName;
 }

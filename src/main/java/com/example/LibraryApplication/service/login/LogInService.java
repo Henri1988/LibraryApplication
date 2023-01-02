@@ -5,10 +5,14 @@ import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.user.user.UserService;
 import com.example.LibraryApplication.domain.user.userrole.UserRole;
 import com.example.LibraryApplication.domain.user.userrole.UserRoleService;
+import com.example.LibraryApplication.domain.user.usersession.UserSession;
+import com.example.LibraryApplication.domain.user.usersession.UserSessionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
+@Slf4j
 public class LogInService {
 
     @Resource
@@ -17,6 +21,9 @@ public class LogInService {
     private UserRoleService userRoleService;
     @Resource
     private ContactService contactService;
+
+    @Resource
+    private UserSessionService userSessionService;
 
     public LogInResponse logInRequest(LogInRequest request) {
         LogInResponse logInResponse = new LogInResponse();
@@ -30,6 +37,9 @@ public class LogInService {
 
         UserRole userRole = userRoleService.getUserRoleById(userId);
         logInResponse.setUserRoleId(userRole.getRole().getId());
+
+        UserSession userSession = userSessionService.createNewSession(user);
+        logInResponse.setUserSessionId(userSession.getId());
 
         return logInResponse;
 

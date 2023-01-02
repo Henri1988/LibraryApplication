@@ -40,7 +40,7 @@ public class RegisterService {
         response.setFirstName(contact.getFirstName());
         response.setLastName(contact.getLastName());
         response.setMobileNumber(contact.getMobileNumber());
-        log.info("User: " + response.getFirstName() + " " + response.getLastName()+ " found!");
+        log.debug("User: " + response.getFirstName() + " " + response.getLastName()+ " found!");
         return response;
     }
 

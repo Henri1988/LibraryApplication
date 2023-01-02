@@ -1,5 +1,6 @@
 package com.example.LibraryApplication.domain.borrow;
 import com.example.LibraryApplication.domain.book.Book;
+import com.example.LibraryApplication.domain.returnborrow.ReturnBorrow;
 import com.example.LibraryApplication.domain.user.user.User;
 import com.example.LibraryApplication.domain.book.BookService;
 import com.example.LibraryApplication.domain.user.user.UserService;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -45,5 +47,9 @@ public class BorrowService {
     public Borrow getBorrowById(Integer borrowId) {
         return borrowRepository.getById(borrowId);
 
+    }
+
+    public List<Borrow> getLateBorrows() {
+        return borrowRepository.getBorrowsWithReturnDateBefore(LocalDate.now());
     }
 }
