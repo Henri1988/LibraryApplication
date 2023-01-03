@@ -5,7 +5,8 @@ Projektis saab eristada kahte liiki teenuseid: teenused, mis on seotud konkreets
 
 Äriloogika on struktureeritud eraldi library package alla.  Seal asuvasse LibraryService klassi on koondatud näiteks saveBookBorrow meetod, mis omakorda pöördub borrowService ja bookService klasside poole.  Eesmärk on projektis mitte liigselt koormata LibraryService klassi ja seeläbi projekt loetavamaks muuta.
 
-Autoriseeritud raamatukogutöötaja saab: 
+Autoriseeritud raamatukogutöötaja saab:
+
 1.Lisadada uusi kasutajaid (profile/register); 
 2.Otsida kasutajainfot kasutaja perekonnanime järgi (profile/user-info/by/lastName);
 3.Otsida kasutajainfot kasutaja id järgi (profile/user-info/by/id);
