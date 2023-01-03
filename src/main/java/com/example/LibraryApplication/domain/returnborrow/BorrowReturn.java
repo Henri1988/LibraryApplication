@@ -11,8 +11,8 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "return_borrow", schema = "library")
-public class ReturnBorrow {
+@Table(name = "borrow_return", schema = "library")
+public class BorrowReturn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

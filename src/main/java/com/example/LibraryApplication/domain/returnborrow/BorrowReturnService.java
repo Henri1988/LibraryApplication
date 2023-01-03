@@ -10,12 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDate;
-import java.util.List;
 
 @Slf4j
 @Service
-public class ReturnBorrowService {
-
+public class BorrowReturnService {
     @Resource
     private BookService bookService;
     @Resource
@@ -23,23 +21,23 @@ public class ReturnBorrowService {
     @Resource
     private BorrowService borrowService;
     @Resource
-    private ReturnBorrowRepository returnBorrowRepository;
+    private BorrowReturnRepository borrowReturnRepository;
 
 
     public void saveBookBorrowReturn(ReturnBorrowRequest returnBorrowRequest) {
-        ReturnBorrow returnBorrow = new ReturnBorrow();
+        BorrowReturn borrowReturn = new BorrowReturn();
 
         log.info("Creating new book borrow return...");
         Book book = bookService.getBookById(returnBorrowRequest.getBookId());
         User user = userService.getUserById(returnBorrowRequest.getUserId());
         Borrow borrow = borrowService.getBorrowById(returnBorrowRequest.getBorrowId());
 
-        returnBorrow.setBook(book);
-        returnBorrow.setUser(user);
-        returnBorrow.setBorrow(borrow);
-        returnBorrow.setReturnedDate(LocalDate.now());
+        borrowReturn.setBook(book);
+        borrowReturn.setUser(user);
+        borrowReturn.setBorrow(borrow);
+        borrowReturn.setReturnedDate(LocalDate.now());
 
-        returnBorrowRepository.save(returnBorrow);
-        log.info(" Book borrow return with id " + returnBorrow.getId() + " is saved!");
+        borrowReturnRepository.save(borrowReturn);
+        log.info(" Book borrow return with id " + borrowReturn.getId() + " is saved!");
     }
 }

@@ -27,9 +27,9 @@ public class BookService {
         log.info("Adding book...");
         Book book = bookMapper.toEntity(bookDto);
         if (book.getQuantity() < 5 || (book.getReleaseTime().isAfter(LocalDate.now().minusDays(93)))) {
-            book.setLendingPeriod(7);
+            book.setLendingPeriodDays(7);
         } else {
-            book.setLendingPeriod(28);
+            book.setLendingPeriodDays(28);
         }
 
         bookRepository.save(book);

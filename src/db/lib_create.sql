@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-01-02 19:25:09.847
+-- Last modification date: 2023-01-02 23:16:22.836
 
 -- tables
 -- Table: book
@@ -9,7 +9,7 @@ CREATE TABLE book (
     author varchar(255)  NOT NULL,
     release_time date  NOT NULL,
     genre varchar(255)  NOT NULL,
-    lending_period int  NOT NULL,
+    lending_period_days int  NOT NULL,
     location varchar(255)  NOT NULL,
     quantity int  NOT NULL,
     CONSTRAINT book_pk PRIMARY KEY (id)
@@ -21,7 +21,7 @@ CREATE TABLE borrow (
     user_id int  NOT NULL,
     book_id int  NOT NULL,
     borrowed_date date  NOT NULL,
-    return_date date  NOT NULL,
+    expected_return_date date  NOT NULL,
     CONSTRAINT borrow_pk PRIMARY KEY (id)
 );
 

@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "borrow", schema = "library")
@@ -24,10 +25,10 @@ public class Borrow {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    @Column(name = "borrowed_date")
+    @Column(name = "borrowed_date", nullable = false)
     private LocalDate borrowedDate;
 
-    @Column(name = "return_date")
-    private LocalDate returnDate;
+    @Column(name = "expected_return_date", nullable = false)
+    private LocalDate expectedReturnDate;
 
 }

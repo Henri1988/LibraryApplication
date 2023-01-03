@@ -6,6 +6,7 @@ import com.example.LibraryApplication.domain.user.userrole.UserRoleRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class UserSessionService {
     public UserSession createNewSession(User user) {
         UserSession userSession = new UserSession();
         userSession.setUser(user);
-        userSession.setExpiresAt(LocalDate.now().plusDays(14));
+        userSession.setExpiresAt(LocalDate.now().plusDays(1));
         userSessionRepository.save(userSession);
 
         return userSession;

@@ -41,7 +41,7 @@ class BookServiceTest {
         bookResponse.setGenre("Some genre");
         bookResponse.setLocation("Some location");
         bookResponse.setReleaseTime(LocalDate.now());
-        bookResponse.setLendingPeriod(7);
+        bookResponse.setLendingPeriodDays(7);
         bookResponse.setQuantity(6);
 
         Book book = new Book();

@@ -28,8 +28,8 @@ public class Book {
     @Column(name = "genre", nullable = false)
     private String genre;
 
-    @Column(name = "lending_period", nullable = false)
-    private Integer lendingPeriod;
+    @Column(name = "lending_period_days", nullable = false)
+    private Integer lendingPeriodDays;
 
     @Column(name = "location", nullable = false)
     private String location;

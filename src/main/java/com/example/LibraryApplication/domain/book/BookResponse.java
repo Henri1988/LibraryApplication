@@ -13,7 +13,7 @@ public class BookResponse implements Serializable {
     private String author;
     private LocalDate releaseTime;
     private String genre;
-    private Integer lendingPeriod;
+    private Integer lendingPeriodDays;
     private String location;
     private Integer quantity;
 }

@@ -8,15 +8,10 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/profile")
 public class RegisterController {
-
     @Resource
     private AuthorizerService authorizerService;
-
     @Resource
     private RegisterService registerService;
-
-    @Resource
-    private ContactService contactService;
 
     @PostMapping("/register")
     @Operation(summary = "Adds new user")
@@ -27,14 +22,17 @@ public class RegisterController {
 
     @GetMapping("/user-info/by/id")
     @Operation(summary = "Finds user info by id")
-    public RegisterRequest findUserInfoById (@RequestParam Integer id){
-        return registerService.findUserInfoById(id);
+    public RegisterRequest findUserInfoById (@RequestParam Integer id, @RequestParam Integer userSessionId) throws Exception {
+        authorizerService.authorizeAsAdmin(userSessionId);
+        return registerService.findUserInfoById(id, userSessionId);
     }
+
 
     @GetMapping("/user-info/by/lastName")
     @Operation(summary = "Finds user info by last name")
-    public RegisterRequest findUserInfoByLastName (@RequestParam String lastName){
-        return registerService.findUserInfoByLastName(lastName);
+    public RegisterRequest findUserInfoByLastName (@RequestParam String lastName, @RequestParam Integer userSessionId) throws Exception {
+        authorizerService.authorizeAsAdmin(userSessionId);
+        return registerService.findUserInfoByLastName(lastName, userSessionId);
     }
 
 }

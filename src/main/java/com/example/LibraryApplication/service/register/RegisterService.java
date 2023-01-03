@@ -26,7 +26,7 @@ public class RegisterService {
         return new RegisterResponse(user.getId());
     }
 
-    public RegisterRequest findUserInfoById(Integer id) {
+    public RegisterRequest findUserInfoById(Integer id, Integer userSessionId) {
 
         RegisterRequest response = new RegisterRequest();
         log.info("Searching member with id " + id + "...");
@@ -45,7 +45,7 @@ public class RegisterService {
     }
 
 
-    public RegisterRequest findUserInfoByLastName(String lastName) {
+    public RegisterRequest findUserInfoByLastName(String lastName, Integer userSessionId) {
 
         RegisterRequest response = new RegisterRequest();
         log.info("Searching member with lastname " + lastName + "...");
