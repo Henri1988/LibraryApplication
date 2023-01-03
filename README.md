@@ -6,6 +6,8 @@ Projektis saab eristada kahte liiki teenuseid: teenused, mis on seotud konkreets
 Äriloogika on struktureeritud eraldi library package alla.  Seal asuvasse LibraryService klassi on koondatud näiteks saveBookBorrow meetod, mis omakorda pöördub borrowService ja bookService klasside poole.  Eesmärk on projektis mitte liigselt koormata LibraryService klassi ja seeläbi projekt loetavamaks muuta.
 
 
+
+
 Autoriseeritud raamatukogutöötaja saab:
 
 1.Lisadada uusi kasutajaid (profile/register);
@@ -13,6 +15,7 @@ Autoriseeritud raamatukogutöötaja saab:
 2.Otsida kasutajainfot kasutaja perekonnanime järgi (profile/user-info/by/lastName);
 
 3.Otsida kasutajainfot kasutaja id järgi (profile/user-info/by/id);
+
 ![image](https://user-images.githubusercontent.com/103241074/210288932-b3fa5f08-b94d-4000-9a41-c95a837ce62d.png)
 
 4.Raamatut välja laenutada (library/save/borrow);
