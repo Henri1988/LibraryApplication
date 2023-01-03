@@ -53,7 +53,7 @@ Anonüümne kasutaja saab:
 
 
 #
-Projektis kasutatud andmemudel
+Projekti andmemudel
 
 [lib-2023-01-03_03-38.pdf](https://github.com/Henri1988/LibraryApplication/files/10333972/lib-2023-01-03_03-38.pdf)
 
