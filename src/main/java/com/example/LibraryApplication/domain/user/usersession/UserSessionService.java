@@ -1,12 +1,7 @@
 package com.example.LibraryApplication.domain.user.usersession;
-
 import com.example.LibraryApplication.domain.user.user.User;
-import com.example.LibraryApplication.domain.user.userrole.UserRole;
-import com.example.LibraryApplication.domain.user.userrole.UserRoleRepository;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
 

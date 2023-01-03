@@ -15,7 +15,6 @@ import java.util.Optional;
 public class AuthorizerService {
     @Resource
     UserSessionService userSessionService;
-
     @Resource
     UserRoleService userRoleService;
 

@@ -1,4 +1,5 @@
 package com.example.LibraryApplication.domain.book;
+import com.example.LibraryApplication.service.authorizer.AuthorizerService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
@@ -10,17 +11,21 @@ public class BookController {
 
     @Resource
     private BookService bookService;
+    @Resource
+    private AuthorizerService authorizerService;
 
 
     @PostMapping("/add")
     @Operation(summary = "Adds new book")
-    public BookResponse addBook(@RequestBody BookDto bookDto){
+    public BookResponse addBook(@RequestBody BookDto bookDto, @RequestParam Integer userSessionId) throws Exception {
+        authorizerService.authorizeAsAdmin(userSessionId);
         return bookService.addBook(bookDto);
     }
 
     @GetMapping("/by/id")
     @Operation(summary = "Finds book by id")
-    public BookDto findBookById (@RequestParam Integer id){
+    public BookDto findBookById (@RequestParam Integer id, @RequestParam Integer userSessionId) throws Exception {
+        authorizerService.authorizeAsAdmin(userSessionId);
         return bookService.findBookById(id);
     }
 
