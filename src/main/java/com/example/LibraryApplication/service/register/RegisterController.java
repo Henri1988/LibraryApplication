@@ -27,7 +27,6 @@ public class RegisterController {
         return registerService.findUserInfoById(id, userSessionId);
     }
 
-
     @GetMapping("/user-info/by/lastName")
     @Operation(summary = "Finds user info by last name")
     public RegisterRequest findUserInfoByLastName (@RequestParam String lastName, @RequestParam Integer userSessionId) throws Exception {

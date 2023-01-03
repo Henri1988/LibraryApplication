@@ -26,18 +26,18 @@ public class LibraryService {
 
 
 
-    public void saveBookBorrow(BorrowDto borrowDto) throws Exception {
+    public void saveBookBorrow(BorrowDto borrowDto, Integer userSessionId) throws Exception {
         borrowService.saveBookBorrow(borrowDto);
         bookService.updateBookQuantityOnLending(borrowDto.getBookId());
     }
 
-    public void saveBookBorrowReturn(ReturnBorrowRequest returnBorrowRequest){
+    public void saveBookBorrowReturn(ReturnBorrowRequest returnBorrowRequest, Integer userSessionId){
         returnBorrowService.saveBookBorrowReturn(returnBorrowRequest);
         bookService.updateBookQuantityOnReturning(returnBorrowRequest);
 
     }
 
-    public List<LateReturnResponseItem> getReportOfLateBooks() {
+    public List<LateReturnResponseItem> getReportOfLateBooks(Integer userSessionId) {
         List<LateReturnResponseItem> lateReturnResponse = new ArrayList<>();
 
         List<Borrow> lateBorrows = borrowService.getLateBorrows();
