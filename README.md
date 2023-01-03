@@ -1,15 +1,13 @@
-# LibraryApplication
+# Raamatukogu rakendus
 Projekti struktuur
 
 Projektis saab eristada kahte liiki teenuseid: teenused, mis on seotud konkreetse tabeliga ja teenused, mis on seotud pigem äriloogikaga ja vajavad mitmete andmetabelite poole pöördumist. 
 
 Äriloogika on struktureeritud eraldi library package alla.  Seal asuvasse LibraryService klassi on koondatud näiteks saveBookBorrow meetod, mis omakorda pöördub borrowService ja bookService klasside poole.  Eesmärk on projektis mitte liigselt koormata LibraryService klassi ja seeläbi projekt loetavamaks muuta.
-
-
-
+#
 
 Autoriseeritud raamatukogutöötaja saab:
-
+#
 1.Lisadada uusi kasutajaid (profile/register);
 
 2.Otsida kasutajainfot kasutaja perekonnanime järgi (profile/user-info/by/lastName);
@@ -26,9 +24,30 @@ Autoriseeritud raamatukogutöötaja saab:
 ![image](https://user-images.githubusercontent.com/103241074/210288941-2cb6de9b-c010-447d-b56c-29681131c810.png)
 
 7.Lisada raamatut (book/add);
+
 ![image](https://user-images.githubusercontent.com/103241074/210288951-d7c1c491-836a-4f48-a96c-4927ce97f766.png)
 
 8.Otsida raamatut id järgi (book/by/id)
+
 ![image](https://user-images.githubusercontent.com/103241074/210288957-5842a1bc-f1fb-4485-afb8-6c31f11717a6.png)
+
+#
+
+Anonüümne kasutaja saab:
+
+#
+1. Otsida raamatuid žanri järgi (book/find/by/genre);
+
+2. Näha kõiki raamatukogus olevaid raamatuid (book/find/all);
+
+ 3.Otsida raamatuid pealkirja järgi (book/by/title);
+
+![image](https://user-images.githubusercontent.com/103241074/210289411-ba46eb5b-1117-4c1e-bd27-b6562122414a.png)
+
+
+
+
+
+
 
 
