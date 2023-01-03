@@ -52,6 +52,10 @@ Anonüümne kasutaja saab:
 ![image](https://user-images.githubusercontent.com/103241074/210290051-05ac5f0e-a92c-40d3-a7c2-a854d134b148.png)
 
 
+#
+Projektis kasutatud andmemudel
+
+[lib-2023-01-03_03-38.pdf](https://github.com/Henri1988/LibraryApplication/files/10333972/lib-2023-01-03_03-38.pdf)
 
 
 
