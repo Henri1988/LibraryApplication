@@ -7,8 +7,10 @@ Projektis saab eristada kahte liiki teenuseid: teenused, mis on seotud konkreets
 
 Autoriseeritud raamatukogutöötaja saab:
 
-1.Lisadada uusi kasutajaid (profile/register); 
+1.Lisadada uusi kasutajaid (profile/register);
+
 2.Otsida kasutajainfot kasutaja perekonnanime järgi (profile/user-info/by/lastName);
+
 3.Otsida kasutajainfot kasutaja id järgi (profile/user-info/by/id);
 
 ![image](https://user-images.githubusercontent.com/103241074/210288932-b3fa5f08-b94d-4000-9a41-c95a837ce62d.png)
